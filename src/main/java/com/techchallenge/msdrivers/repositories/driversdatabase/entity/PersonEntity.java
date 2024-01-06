@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Index;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -32,6 +33,9 @@ public class PersonEntity {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     public PersonEntity() {
         this.externalId = UUID.randomUUID();
