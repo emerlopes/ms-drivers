@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.br.CPF;
 public class PersonDTO {
 
     @CPF(message = "CPF inválido")
+    // TODO: Criar uma anotacao para verificar se o CPF já existe na base
     private String cpf;
     private String name;
     private int age;
