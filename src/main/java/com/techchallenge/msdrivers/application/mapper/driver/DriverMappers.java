@@ -1,10 +1,10 @@
-package com.techchallenge.msdrivers.application.mapper;
+package com.techchallenge.msdrivers.application.mapper.driver;
 
 
 
-import com.techchallenge.msdrivers.application.builder.DriverDomainEntityInputBuilder;
-import com.techchallenge.msdrivers.application.builder.DriverDomainEntityOutputBuilder;
-import com.techchallenge.msdrivers.application.builder.DriverEntityBuilder;
+import com.techchallenge.msdrivers.application.builder.driver.DriverDomainEntityInputBuilder;
+import com.techchallenge.msdrivers.application.builder.driver.DriverDomainEntityOutputBuilder;
+import com.techchallenge.msdrivers.application.builder.driver.DriverEntityBuilder;
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
@@ -13,8 +13,8 @@ import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEnt
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mappers {
-    public static DriverDomainEntityInput mapToPersonDomainEntityInput(DriverDTO driverDTO) {
+public class DriverMappers {
+    public static DriverDomainEntityInput mapToDriverDomainEntityInput(DriverDTO driverDTO) {
         return new DriverDomainEntityInputBuilder()
                 .withCpf(driverDTO.getCpf())
                 .withName(driverDTO.getName())
@@ -23,7 +23,7 @@ public class Mappers {
                 .build();
     }
 
-    public static DriverDomainEntityOutput mapToPersonDomainEntityOutput(DriverEntity driverEntity) {
+    public static DriverDomainEntityOutput mapToDriverDomainEntityOutput(DriverEntity driverEntity) {
         return new DriverDomainEntityOutputBuilder()
                 .withExternalId(driverEntity.getExternalId())
                 .withName(driverEntity.getName())
@@ -32,10 +32,10 @@ public class Mappers {
                 .build();
     }
 
-    public static List<DriverDomainEntityOutput> mapToPersonDomainEntitiesOutput(List<DriverEntity> personEntities) {
+    public static List<DriverDomainEntityOutput> mapToDriverDomainEntitiesOutput(List<DriverEntity> driverEntities) {
         List<DriverDomainEntityOutput> outputs = new ArrayList<>();
 
-        for (DriverEntity driverEntity : personEntities) {
+        for (DriverEntity driverEntity : driverEntities) {
             final var output = new DriverDomainEntityOutputBuilder()
                     .withExternalId(driverEntity.getExternalId())
                     .withName(driverEntity.getName())
@@ -49,7 +49,7 @@ public class Mappers {
         return outputs;
     }
 
-    public static DriverEntity mapToPersonEntity(DriverDomainEntityInput driverDomainEntityInput) {
+    public static DriverEntity mapToDriverEntity(DriverDomainEntityInput driverDomainEntityInput) {
         return new DriverEntityBuilder()
                 .withCpf(driverDomainEntityInput.getCpf())
                 .withName(driverDomainEntityInput.getName())
