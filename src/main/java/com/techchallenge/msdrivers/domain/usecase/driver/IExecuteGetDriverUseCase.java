@@ -1,4 +1,4 @@
-package com.techchallenge.msdrivers.domain.usecase;
+package com.techchallenge.msdrivers.domain.usecase.driver;
 
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;

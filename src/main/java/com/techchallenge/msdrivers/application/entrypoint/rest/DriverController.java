@@ -3,8 +3,8 @@ package com.techchallenge.msdrivers.application.entrypoint.rest;
 
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.application.mapper.Mappers;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteCreateDriverUseCase;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteGetDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteCreateDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetDriverUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

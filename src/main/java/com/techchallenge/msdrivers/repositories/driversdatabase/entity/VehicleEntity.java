@@ -10,7 +10,7 @@ public class VehicleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long vehicleId;
 
     @Column(name = "license_plate_number", nullable = false)
     private String licensePlateNumber;
@@ -22,8 +22,8 @@ public class VehicleEntity {
     private String model;
 
     @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false)
-    private DriverEntity person;
+    @JoinColumn(name = "external_driver_id", nullable = false)
+    private DriverEntity driver;
 
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creationDate;

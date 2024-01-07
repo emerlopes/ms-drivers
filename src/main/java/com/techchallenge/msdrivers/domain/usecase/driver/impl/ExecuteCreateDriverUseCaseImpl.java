@@ -1,10 +1,10 @@
-package com.techchallenge.msdrivers.domain.usecase.impl;
+package com.techchallenge.msdrivers.domain.usecase.driver.impl;
 
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteCreateDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteCreateDriverUseCase;
 import org.springframework.stereotype.Service;
 
 @Service

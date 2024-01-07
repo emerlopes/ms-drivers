@@ -15,11 +15,11 @@ public class DriverEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "internal_id")
+    @Column(name = "internal_driver_id")
     private Long internalId;
 
-    @Column(name = "external_id")
-    @Index(name = "idx_external_id")
+    @Column(name = "external_driver_id")
+    @Index(name = "idx_external_driver_id")
     private UUID externalId;
 
     @Column(name = "cpf")
