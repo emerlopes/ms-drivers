@@ -2,7 +2,7 @@ package com.techchallenge.msdrivers.application.entrypoint.rest;
 
 
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
-import com.techchallenge.msdrivers.application.mapper.Mappers;
+import com.techchallenge.msdrivers.application.mapper.driver.DriverMappers;
 import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteCreateDriverUseCase;
 import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetDriverUseCase;
 import jakarta.validation.Valid;
@@ -34,7 +34,7 @@ public class DriverController {
     @PostMapping
     public ResponseEntity<?> createPerson(@Valid @RequestBody DriverDTO driverDTO) {
 
-        final var personDomainEntity = Mappers.mapToPersonDomainEntityInput(driverDTO);
+        final var personDomainEntity = DriverMappers.mapToDriverDomainEntityInput(driverDTO);
         final var response = executeCreatePersonUseCase.execute(personDomainEntity);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

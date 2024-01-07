@@ -1,7 +1,7 @@
 package com.techchallenge.msdrivers.repositories.driversdatabase.service;
 
 
-import com.techchallenge.msdrivers.application.mapper.Mappers;
+import com.techchallenge.msdrivers.application.mapper.driver.DriverMappers;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
@@ -21,15 +21,15 @@ public class DriverDomainService implements IDriverDomainService {
 
     @Override
     public DriverDomainEntityOutput createPerson(DriverDomainEntityInput driverDomainEntityInput) {
-        final var entity = Mappers.mapToPersonEntity(driverDomainEntityInput);
+        final var entity = DriverMappers.mapToDriverEntity(driverDomainEntityInput);
         final var personEntity = personRepository.save(entity);
 
-        return Mappers.mapToPersonDomainEntityOutput(personEntity);
+        return DriverMappers.mapToDriverDomainEntityOutput(personEntity);
     }
 
     @Override
     public List<DriverDomainEntityOutput> getPersons() {
         final var entities = personRepository.findAll();
-        return Mappers.mapToPersonDomainEntitiesOutput(entities);
+        return DriverMappers.mapToDriverDomainEntitiesOutput(entities);
     }
 }
