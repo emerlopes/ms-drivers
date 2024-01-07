@@ -2,45 +2,45 @@ package com.techchallenge.msdrivers.application.mapper;
 
 
 
-import com.techchallenge.msdrivers.application.builder.PersonDomainEntityInputBuilder;
-import com.techchallenge.msdrivers.application.builder.PersonDomainEntityOutputBuilder;
-import com.techchallenge.msdrivers.application.builder.PersonEntityBuilder;
-import com.techchallenge.msdrivers.application.entrypoint.rest.dto.PersonDTO;
-import com.techchallenge.msdrivers.domain.entity.PersonDomainEntityInput;
-import com.techchallenge.msdrivers.domain.entity.PersonDomainEntityOutput;
-import com.techchallenge.msdrivers.repositories.driversdatabase.entity.PersonEntity;
+import com.techchallenge.msdrivers.application.builder.DriverDomainEntityInputBuilder;
+import com.techchallenge.msdrivers.application.builder.DriverDomainEntityOutputBuilder;
+import com.techchallenge.msdrivers.application.builder.DriverEntityBuilder;
+import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
+import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Mappers {
-    public static PersonDomainEntityInput mapToPersonDomainEntityInput(PersonDTO personDTO) {
-        return new PersonDomainEntityInputBuilder()
-                .withCpf(personDTO.getCpf())
-                .withName(personDTO.getName())
-                .withAge(personDTO.getAge())
-                .withPhoneNumber(personDTO.getPhoneNumber())
+    public static DriverDomainEntityInput mapToPersonDomainEntityInput(DriverDTO driverDTO) {
+        return new DriverDomainEntityInputBuilder()
+                .withCpf(driverDTO.getCpf())
+                .withName(driverDTO.getName())
+                .withAge(driverDTO.getAge())
+                .withPhoneNumber(driverDTO.getPhoneNumber())
                 .build();
     }
 
-    public static PersonDomainEntityOutput mapToPersonDomainEntityOutput(PersonEntity personEntity) {
-        return new PersonDomainEntityOutputBuilder()
-                .withExternalId(personEntity.getExternalId())
-                .withName(personEntity.getName())
-                .withAge(personEntity.getAge())
-                .withPhoneNumber(personEntity.getPhoneNumber())
+    public static DriverDomainEntityOutput mapToPersonDomainEntityOutput(DriverEntity driverEntity) {
+        return new DriverDomainEntityOutputBuilder()
+                .withExternalId(driverEntity.getExternalId())
+                .withName(driverEntity.getName())
+                .withAge(driverEntity.getAge())
+                .withPhoneNumber(driverEntity.getPhoneNumber())
                 .build();
     }
 
-    public static List<PersonDomainEntityOutput> mapToPersonDomainEntitiesOutput(List<PersonEntity> personEntities) {
-        List<PersonDomainEntityOutput> outputs = new ArrayList<>();
+    public static List<DriverDomainEntityOutput> mapToPersonDomainEntitiesOutput(List<DriverEntity> personEntities) {
+        List<DriverDomainEntityOutput> outputs = new ArrayList<>();
 
-        for (PersonEntity personEntity : personEntities) {
-            final var output = new PersonDomainEntityOutputBuilder()
-                    .withExternalId(personEntity.getExternalId())
-                    .withName(personEntity.getName())
-                    .withAge(personEntity.getAge())
-                    .withPhoneNumber(personEntity.getPhoneNumber())
+        for (DriverEntity driverEntity : personEntities) {
+            final var output = new DriverDomainEntityOutputBuilder()
+                    .withExternalId(driverEntity.getExternalId())
+                    .withName(driverEntity.getName())
+                    .withAge(driverEntity.getAge())
+                    .withPhoneNumber(driverEntity.getPhoneNumber())
                     .build();
 
             outputs.add(output);
@@ -49,12 +49,12 @@ public class Mappers {
         return outputs;
     }
 
-    public static PersonEntity mapToPersonEntity(PersonDomainEntityInput personDomainEntityInput) {
-        return new PersonEntityBuilder()
-                .withCpf(personDomainEntityInput.getCpf())
-                .withName(personDomainEntityInput.getName())
-                .withAge(personDomainEntityInput.getAge())
-                .withPhoneNumber(personDomainEntityInput.getPhoneNumber())
+    public static DriverEntity mapToPersonEntity(DriverDomainEntityInput driverDomainEntityInput) {
+        return new DriverEntityBuilder()
+                .withCpf(driverDomainEntityInput.getCpf())
+                .withName(driverDomainEntityInput.getName())
+                .withAge(driverDomainEntityInput.getAge())
+                .withPhoneNumber(driverDomainEntityInput.getPhoneNumber())
                 .build();
 
 

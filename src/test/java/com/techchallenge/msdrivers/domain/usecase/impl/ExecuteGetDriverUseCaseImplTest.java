@@ -1,8 +1,8 @@
 package com.techchallenge.msdrivers.domain.usecase.impl;
 
 import com.techchallenge.msdrivers.application.shared.CustomData;
-import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.service.IPersonDomainService;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
+import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,13 +15,13 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-class ExecuteGetPersonUseCaseImplTest {
+class ExecuteGetDriverUseCaseImplTest {
 
     @Mock
-    private IPersonDomainService personService;
+    private IDriverDomainService personService;
 
     @InjectMocks
-    private ExecuteGetPersonUseCaseImpl executeGetPersonUseCase;
+    private ExecuteGetDriverUseCaseImpl executeGetPersonUseCase;
 
     @BeforeEach
     void setUp() {
@@ -30,16 +30,16 @@ class ExecuteGetPersonUseCaseImplTest {
 
     @Test
     void execute() {
-        var person = new PersonDomainEntityOutput();
+        var person = new DriverDomainEntityOutput();
         person.setExternalId(UUID.randomUUID());
         person.setName("Alice");
         person.setAge(30);
         person.setPhoneNumber("1234567890");
 
-        List<PersonDomainEntityOutput> persons = List.of(person);
+        List<DriverDomainEntityOutput> persons = List.of(person);
         when(personService.getPersons()).thenReturn(persons);
 
-        CustomData<List<PersonDomainEntityOutput>> result = executeGetPersonUseCase.execute();
+        CustomData<List<DriverDomainEntityOutput>> result = executeGetPersonUseCase.execute();
 
         assertNotNull(result);
         assertNotNull(result.getData());

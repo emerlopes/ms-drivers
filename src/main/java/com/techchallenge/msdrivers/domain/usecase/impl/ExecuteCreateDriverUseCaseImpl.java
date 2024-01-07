@@ -1,26 +1,26 @@
 package com.techchallenge.msdrivers.domain.usecase.impl;
 
 import com.techchallenge.msdrivers.application.shared.CustomData;
-import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityInput;
-import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.service.IPersonDomainService;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteArgsCreatePersonUseCase;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
+import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
+import com.techchallenge.msdrivers.domain.usecase.IExecuteCreateDriverUseCase;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExecuteCreatePersonUseCaseImpl implements IExecuteArgsCreatePersonUseCase {
+public class ExecuteCreateDriverUseCaseImpl implements IExecuteCreateDriverUseCase {
 
-    private final IPersonDomainService personService;
+    private final IDriverDomainService personService;
 
-    public ExecuteCreatePersonUseCaseImpl(IPersonDomainService personService) {
+    public ExecuteCreateDriverUseCaseImpl(IDriverDomainService personService) {
         this.personService = personService;
     }
 
     @Override
-    public CustomData<PersonDomainEntityOutput> execute(PersonDomainEntityInput personDomainEntityInput) {
+    public CustomData<DriverDomainEntityOutput> execute(DriverDomainEntityInput driverDomainEntityInput) {
 
-        final var person = personService.createPerson(personDomainEntityInput);
-        CustomData<PersonDomainEntityOutput> customData = new CustomData<>();
+        final var person = personService.createPerson(driverDomainEntityInput);
+        CustomData<DriverDomainEntityOutput> customData = new CustomData<>();
         customData.setData(person);
         return customData;
     }

@@ -1,15 +1,15 @@
 package com.techchallenge.msdrivers.domain.service;
 
 
-import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityInput;
-import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityOutput;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 
 import java.util.List;
 
-public interface IPersonDomainService {
-    PersonDomainEntityOutput createPerson(PersonDomainEntityInput personDomainEntityInput);
+public interface IDriverDomainService {
+    DriverDomainEntityOutput createPerson(DriverDomainEntityInput driverDomainEntityInput);
 
-    List<PersonDomainEntityOutput> getPersons();
+    List<DriverDomainEntityOutput> getPersons();
 
 
 }

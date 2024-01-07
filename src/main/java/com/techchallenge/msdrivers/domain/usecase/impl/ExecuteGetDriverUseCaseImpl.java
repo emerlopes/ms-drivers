@@ -2,26 +2,26 @@ package com.techchallenge.msdrivers.domain.usecase.impl;
 
 
 import com.techchallenge.msdrivers.application.shared.CustomData;
-import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.service.IPersonDomainService;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteArgsGetPersonUseCase;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
+import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
+import com.techchallenge.msdrivers.domain.usecase.IExecuteGetDriverUseCase;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ExecuteGetPersonUseCaseImpl implements IExecuteArgsGetPersonUseCase {
+public class ExecuteGetDriverUseCaseImpl implements IExecuteGetDriverUseCase {
 
-    private final IPersonDomainService personService;
+    private final IDriverDomainService personService;
 
-    public ExecuteGetPersonUseCaseImpl(IPersonDomainService personService) {
+    public ExecuteGetDriverUseCaseImpl(IDriverDomainService personService) {
         this.personService = personService;
     }
 
     @Override
-    public CustomData<List<PersonDomainEntityOutput>> execute() {
+    public CustomData<List<DriverDomainEntityOutput>> execute() {
         final var persons = personService.getPersons();
-        CustomData<List<PersonDomainEntityOutput>> customData = new CustomData<>();
+        CustomData<List<DriverDomainEntityOutput>> customData = new CustomData<>();
         customData.setData(persons);
         return customData;
     }

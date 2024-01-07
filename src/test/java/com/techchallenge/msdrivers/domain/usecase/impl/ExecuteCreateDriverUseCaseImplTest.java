@@ -1,9 +1,9 @@
 package com.techchallenge.msdrivers.domain.usecase.impl;
 
 import com.techchallenge.msdrivers.application.shared.CustomData;
-import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityInput;
-import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.service.IPersonDomainService;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
+import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,13 +15,13 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-class ExecuteCreatePersonUseCaseImplTest {
+class ExecuteCreateDriverUseCaseImplTest {
 
     @Mock
-    private IPersonDomainService personService;
+    private IDriverDomainService personService;
 
     @InjectMocks
-    private ExecuteCreatePersonUseCaseImpl executeCreatePersonUseCase;
+    private ExecuteCreateDriverUseCaseImpl executeCreatePersonUseCase;
 
     @BeforeEach
     void setUp() {
@@ -30,14 +30,14 @@ class ExecuteCreatePersonUseCaseImplTest {
 
     @Test
     void execute() {
-        PersonDomainEntityInput input = new PersonDomainEntityInput();
+        DriverDomainEntityInput input = new DriverDomainEntityInput();
 
-        PersonDomainEntityOutput output = new PersonDomainEntityOutput();
+        DriverDomainEntityOutput output = new DriverDomainEntityOutput();
         output.setExternalId(UUID.randomUUID());
 
         when(personService.createPerson(input)).thenReturn(output);
 
-        CustomData<PersonDomainEntityOutput> result = executeCreatePersonUseCase.execute(input);
+        CustomData<DriverDomainEntityOutput> result = executeCreatePersonUseCase.execute(input);
 
         assertNotNull(result);
         assertNotNull(result.getData());
