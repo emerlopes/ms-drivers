@@ -5,12 +5,13 @@ import lombok.Data;
 import org.hibernate.annotations.Index;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
 @Entity
 @Table(name = "tb01_person")
-public class PersonEntity {
+public class DriverEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,10 +35,13 @@ public class PersonEntity {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private Set<VehicleEntity> vehicles;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    public PersonEntity() {
+    public DriverEntity() {
         this.externalId = UUID.randomUUID();
     }
 

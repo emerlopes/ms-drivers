@@ -1,6 +1,6 @@
-package com.techchallenge.msdrivers.domain.entity;
+package com.techchallenge.msdrivers.domain.entity.driver;
 
-public class PersonDomainEntityInput {
+public class DriverDomainEntityInput {
 
     private String cpf;
     private String name;

@@ -5,7 +5,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Data
-public class PersonDTO {
+public class DriverDTO {
 
     @CPF(message = "CPF inválido")
     // TODO: Criar uma anotacao para verificar se o CPF já existe na base

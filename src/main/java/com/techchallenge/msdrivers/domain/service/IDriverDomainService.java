@@ -1,8 +1,8 @@
 package com.techchallenge.msdrivers.domain.service;
 
 
-import com.techchallenge.msdrivers.domain.entity.PersonDomainEntityInput;
-import com.techchallenge.msdrivers.domain.entity.PersonDomainEntityOutput;
+import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityInput;
+import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityOutput;
 
 import java.util.List;
 

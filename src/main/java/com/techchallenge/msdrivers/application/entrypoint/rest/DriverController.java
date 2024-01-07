@@ -1,10 +1,10 @@
 package com.techchallenge.msdrivers.application.entrypoint.rest;
 
 
-import com.techchallenge.msdrivers.application.entrypoint.rest.dto.PersonDTO;
+import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.application.mapper.Mappers;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteArgsCreatePersonUseCase;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteArgsGetPersonUseCase;
+import com.techchallenge.msdrivers.domain.usecase.IExecuteCreateDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.IExecuteGetDriverUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/persons")
-public class PersonController {
+public class DriverController {
 
-    private final IExecuteArgsCreatePersonUseCase executeCreatePersonUseCase;
+    private final IExecuteCreateDriverUseCase executeCreatePersonUseCase;
 
-    private final IExecuteArgsGetPersonUseCase executeGetPersonUseCase;
+    private final IExecuteGetDriverUseCase executeGetPersonUseCase;
 
-    public PersonController(
-            IExecuteArgsCreatePersonUseCase executeCreatePersonUseCase,
-            IExecuteArgsGetPersonUseCase executeGetPersonUseCase) {
+    public DriverController(
+            IExecuteCreateDriverUseCase executeCreatePersonUseCase,
+            IExecuteGetDriverUseCase executeGetPersonUseCase) {
         this.executeCreatePersonUseCase = executeCreatePersonUseCase;
         this.executeGetPersonUseCase = executeGetPersonUseCase;
     }
@@ -32,9 +32,9 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createPerson(@Valid @RequestBody PersonDTO personDTO) {
+    public ResponseEntity<?> createPerson(@Valid @RequestBody DriverDTO driverDTO) {
 
-        final var personDomainEntity = Mappers.mapToPersonDomainEntityInput(personDTO);
+        final var personDomainEntity = Mappers.mapToPersonDomainEntityInput(driverDTO);
         final var response = executeCreatePersonUseCase.execute(personDomainEntity);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

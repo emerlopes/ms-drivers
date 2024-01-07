@@ -2,7 +2,7 @@ package com.techchallenge.msdrivers.domain.usecase.impl;
 
 
 import com.techchallenge.msdrivers.application.shared.CustomData;
-import com.techchallenge.msdrivers.domain.entity.PersonDomainEntityOutput;
+import com.techchallenge.msdrivers.domain.entity.driver.PersonDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.service.IPersonDomainService;
 import com.techchallenge.msdrivers.domain.usecase.IExecuteArgsGetPersonUseCase;
 import org.springframework.stereotype.Service;

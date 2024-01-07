@@ -1,10 +1,10 @@
 package com.techchallenge.msdrivers.application.entrypoint.rest;
 
-import com.techchallenge.msdrivers.application.entrypoint.rest.dto.PersonDTO;
+import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.application.shared.CustomData;
-import com.techchallenge.msdrivers.domain.entity.PersonDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteArgsCreatePersonUseCase;
-import com.techchallenge.msdrivers.domain.usecase.IExecuteArgsGetPersonUseCase;
+import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
+import com.techchallenge.msdrivers.domain.usecase.IExecuteCreateDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.IExecuteGetDriverUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,16 +20,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-class PersonControllerTest {
+class DriverControllerTest {
 
     @Mock
-    private IExecuteArgsCreatePersonUseCase executeCreatePersonUseCase;
+    private IExecuteCreateDriverUseCase executeCreatePersonUseCase;
 
     @Mock
-    private IExecuteArgsGetPersonUseCase executeGetPersonUseCase;
+    private IExecuteGetDriverUseCase executeGetPersonUseCase;
 
     @InjectMocks
-    private PersonController personController;
+    private DriverController driverController;
 
     @BeforeEach
     void setUp() {
@@ -43,19 +43,19 @@ class PersonControllerTest {
         int age = 30;
         String phoneNumber = "1234567890";
 
-        PersonDomainEntityOutput personOutput = new PersonDomainEntityOutput();
+        DriverDomainEntityOutput personOutput = new DriverDomainEntityOutput();
         personOutput.setExternalId(externalId);
         personOutput.setName(name);
         personOutput.setAge(age);
         personOutput.setPhoneNumber(phoneNumber);
 
-        CustomData<List<PersonDomainEntityOutput>> customData = new CustomData<>();
+        CustomData<List<DriverDomainEntityOutput>> customData = new CustomData<>();
 
-        List<PersonDomainEntityOutput> persons = List.of(personOutput);
+        List<DriverDomainEntityOutput> persons = List.of(personOutput);
         customData.setData(persons);
         when(executeGetPersonUseCase.execute()).thenReturn(customData);
 
-        ResponseEntity<?> response = personController.getPersons();
+        ResponseEntity<?> response = driverController.getPersons();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(customData, response.getBody());
@@ -63,16 +63,16 @@ class PersonControllerTest {
 
     @Test
     void testCreatePerson() {
-        PersonDTO personDTO = new PersonDTO();
+        DriverDTO driverDTO = new DriverDTO();
 
         UUID externalId = UUID.randomUUID();
         String name = "Bob";
         int age = 35;
         String phoneNumber = "0987654321";
 
-        CustomData<PersonDomainEntityOutput> customData = new CustomData<>();
+        CustomData<DriverDomainEntityOutput> customData = new CustomData<>();
 
-        PersonDomainEntityOutput expectedResponse = new PersonDomainEntityOutput();
+        DriverDomainEntityOutput expectedResponse = new DriverDomainEntityOutput();
         expectedResponse.setExternalId(externalId);
         expectedResponse.setName(name);
         expectedResponse.setAge(age);
@@ -82,7 +82,7 @@ class PersonControllerTest {
 
         when(executeCreatePersonUseCase.execute(any())).thenReturn(customData);
 
-        ResponseEntity<?> response = personController.createPerson(personDTO);
+        ResponseEntity<?> response = driverController.createPerson(driverDTO);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(customData, response.getBody());
