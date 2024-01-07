@@ -1,9 +1,11 @@
 package com.techchallenge.msdrivers.repositories.driversdatabase.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Data
 @Entity
 @Table(name = "tb02_vehicles")
 public class VehicleEntity {

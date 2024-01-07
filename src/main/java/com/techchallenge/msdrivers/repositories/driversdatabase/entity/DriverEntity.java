@@ -35,7 +35,8 @@ public class DriverEntity {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    @Column(name = "vehicle_id")
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
     private Set<VehicleEntity> vehicles;
 
     @Column(name = "created_at")

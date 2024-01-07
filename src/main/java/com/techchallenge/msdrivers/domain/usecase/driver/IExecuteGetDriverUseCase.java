@@ -2,9 +2,10 @@ package com.techchallenge.msdrivers.domain.usecase.driver;
 
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.shared.IExecuteNoArgs;
+import com.techchallenge.msdrivers.domain.shared.IExecuteArgs;
+import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
 
-import java.util.List;
+import java.util.UUID;
 
-public interface IExecuteGetDriverUseCase extends IExecuteNoArgs<CustomData<List<DriverDomainEntityOutput>>> {
+public interface IExecuteGetDriverUseCase extends IExecuteArgs<CustomData<DriverEntity>, UUID> {
 }

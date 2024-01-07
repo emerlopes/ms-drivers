@@ -4,7 +4,7 @@ package com.techchallenge.msdrivers.application.entrypoint.rest;
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.application.mapper.driver.DriverMappers;
 import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteCreateDriverUseCase;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetAllDriversUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +16,11 @@ public class DriverController {
 
     private final IExecuteCreateDriverUseCase executeCreatePersonUseCase;
 
-    private final IExecuteGetDriverUseCase executeGetPersonUseCase;
+    private final IExecuteGetAllDriversUseCase executeGetPersonUseCase;
 
     public DriverController(
             IExecuteCreateDriverUseCase executeCreatePersonUseCase,
-            IExecuteGetDriverUseCase executeGetPersonUseCase) {
+            IExecuteGetAllDriversUseCase executeGetPersonUseCase) {
         this.executeCreatePersonUseCase = executeCreatePersonUseCase;
         this.executeGetPersonUseCase = executeGetPersonUseCase;
     }

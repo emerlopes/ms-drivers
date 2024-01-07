@@ -14,7 +14,7 @@ public class VehicleDTO {
     private String brand;
     private String model;
 
-    @JsonProperty("driver_id")
-    private UUID driverId;
+    @JsonProperty("driver_external_id")
+    private UUID driverExternalId;
 
 }

@@ -4,7 +4,7 @@ import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteCreateDriverUseCase;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetAllDriversUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -26,7 +26,7 @@ class DriverControllerTest {
     private IExecuteCreateDriverUseCase executeCreatePersonUseCase;
 
     @Mock
-    private IExecuteGetDriverUseCase executeGetPersonUseCase;
+    private IExecuteGetAllDriversUseCase executeGetPersonUseCase;
 
     @InjectMocks
     private DriverController driverController;

@@ -49,7 +49,7 @@ class DriverDomainServiceTest {
         List<DriverEntity> personEntities = List.of(personEntity);
         when(personRepository.findAll()).thenReturn(personEntities);
 
-        List<DriverDomainEntityOutput> result = personDomainService.getPersons();
+        List<DriverDomainEntityOutput> result = personDomainService.findAllDrivers();
 
         assertNotNull(result);
         assertFalse(result.isEmpty());
