@@ -2,10 +2,7 @@ package com.techchallenge.msdrivers.repositories.driversdatabase.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Index;
-import org.hibernate.annotations.ManyToAny;
 
 import java.time.LocalDateTime;
 import java.util.List;
