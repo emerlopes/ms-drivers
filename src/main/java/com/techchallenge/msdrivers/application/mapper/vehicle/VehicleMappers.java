@@ -5,7 +5,6 @@ import com.techchallenge.msdrivers.application.builder.vehicle.VehicleDomainEnti
 import com.techchallenge.msdrivers.application.builder.vehicle.VehicleEntityBuilder;
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.VehicleDTO;
 import com.techchallenge.msdrivers.application.mapper.driver.DriverMappers;
-import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.vehicle.VehicleDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.vehicle.VehicleDomainEntityOutput;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.VehicleEntity;
