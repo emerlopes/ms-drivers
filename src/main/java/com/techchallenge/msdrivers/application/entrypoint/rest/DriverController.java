@@ -26,7 +26,7 @@ public class DriverController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getPersons() {
+    public ResponseEntity<?> findDrivers() {
         final var response = executeGetPersonUseCase.execute();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }

@@ -55,7 +55,7 @@ class DriverControllerTest {
         customData.setData(persons);
         when(executeGetPersonUseCase.execute()).thenReturn(customData);
 
-        ResponseEntity<?> response = driverController.getPersons();
+        ResponseEntity<?> response = driverController.findDrivers();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(customData, response.getBody());
