@@ -8,8 +8,6 @@ import com.techchallenge.msdrivers.repositories.driversdatabase.repository.IDriv
 import com.techchallenge.msdrivers.repositories.driversdatabase.repository.IVehicleRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-
 @Service
 public class VehicleDomainService implements IVehicleDomainService {
 
@@ -27,7 +25,6 @@ public class VehicleDomainService implements IVehicleDomainService {
         final var vehicleEntity = VehicleMappers.mapToVehileEntity(vehicleDomainEntityInput);
         final var entitySaved = vehicleRepository.save(vehicleEntity);
         final var driver = entitySaved.getDriver();
-        final var vehicles = vehicleRepository.findByDriver(driver);
 
         driverRepository.save(driver);
 
