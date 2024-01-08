@@ -1,9 +1,7 @@
 package com.techchallenge.msdrivers.application.builder.vehicle;
 
 import com.techchallenge.msdrivers.domain.entity.driver.CustomDriverDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.entity.vehicle.VehicleDomainEntityOutput;
-import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
 
 import java.time.LocalDateTime;
 
@@ -41,7 +39,7 @@ public class VehicleDomainEntityOutputBuilder {
     }
 
     public VehicleDomainEntityOutputBuilder withCreationDate(LocalDateTime creationDate) {
-        vehicleDomainEntityOutput.setCreationDate(creationDate);
+        vehicleDomainEntityOutput.setCreationAt(creationDate);
         return this;
     }
 
