@@ -52,14 +52,14 @@ jobs:
           images: ${{ secrets.DOCKER_USERNAME }}/spring-boot-docker:${{ github.sha }}
       - name: Show environment variables
         run: |
-          echo "DATABASE_URL: $DATABASE_URL"
-          echo "DATABASE_USERNAME: $DATABASE_USERNAME"
-          echo "DATABASE_PASSWORD: $DATABASE_PASSWORD"
+          echo "DATABASE_URL: ${{ secrets.$DATABASE_URL }}"
+          echo "DATABASE_USERNAME: ${{ secrets.DOCKER_USERNAME }}"
+          echo "DATABASE_PASSWORD: ${{ secrets.$DATABASE_PASSWORD }}"
       - name: Run docker container
         run: |
           sudo docker run -d \
             -p 8080:8080 \
-            -e DATABASE_URL=$DATABASE_URL \
-            -e DATABASE_USERNAME=$DATABASE_USERNAME \
-            -e DATABASE_PASSWORD=$DATABASE_PASSWORD \
+            -e DATABASE_URL=${{ secrets.$DATABASE_URL }} \
+            -e DATABASE_USERNAME=${{ secrets.DOCKER_USERNAME }} \
+            -e DATABASE_PASSWORD=${{ secrets.$DATABASE_PASSWORD }} \
             ${{ secrets.DOCKER_USERNAME }}/spring-boot-docker:${{ github.sha }}
