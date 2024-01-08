@@ -1,7 +1,6 @@
 package com.techchallenge.msdrivers.application.mapper.driver;
 
 
-
 import com.techchallenge.msdrivers.application.builder.driver.DriverDomainEntityInputBuilder;
 import com.techchallenge.msdrivers.application.builder.driver.DriverDomainEntityOutputBuilder;
 import com.techchallenge.msdrivers.application.builder.driver.DriverEntityBuilder;
@@ -9,8 +8,11 @@ import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
+import com.techchallenge.msdrivers.repositories.driversdatabase.entity.VehicleEntity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class DriverMappers {
@@ -29,6 +31,8 @@ public class DriverMappers {
                 .withName(driverEntity.getName())
                 .withAge(driverEntity.getAge())
                 .withPhoneNumber(driverEntity.getPhoneNumber())
+                .withVehicle(driverEntity.getVehicles())
+                .withCreatedAt(driverEntity.getCreatedAt())
                 .build();
     }
 
@@ -41,6 +45,8 @@ public class DriverMappers {
                     .withName(driverEntity.getName())
                     .withAge(driverEntity.getAge())
                     .withPhoneNumber(driverEntity.getPhoneNumber())
+                    .withVehicle(driverEntity.getVehicles())
+                    .withCreatedAt(driverEntity.getCreatedAt())
                     .build();
 
             outputs.add(output);
@@ -55,6 +61,8 @@ public class DriverMappers {
                 .withName(driverDomainEntityInput.getName())
                 .withAge(driverDomainEntityInput.getAge())
                 .withPhoneNumber(driverDomainEntityInput.getPhoneNumber())
+                .withVehicle(new ArrayList<>())
+                .withCreateAt(LocalDateTime.now())
                 .build();
 
 

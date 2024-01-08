@@ -2,6 +2,11 @@ package com.techchallenge.msdrivers.application.builder.driver;
 
 
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
+import com.techchallenge.msdrivers.repositories.driversdatabase.entity.VehicleEntity;
+
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
 
 public class DriverEntityBuilder {
 
@@ -28,6 +33,16 @@ public class DriverEntityBuilder {
 
     public DriverEntityBuilder withPhoneNumber(String phoneNumber) {
         driverEntity.setPhoneNumber(phoneNumber);
+        return this;
+    }
+
+    public DriverEntityBuilder withVehicle(List<VehicleEntity> vehicle) {
+        driverEntity.setVehicles(vehicle);
+        return this;
+    }
+
+    public DriverEntityBuilder withCreateAt(LocalDateTime createAt) {
+        driverEntity.setCreatedAt(createAt);
         return this;
     }
 
