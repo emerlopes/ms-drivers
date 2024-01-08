@@ -1,10 +1,12 @@
 package com.techchallenge.msdrivers.application.mapper.driver;
 
 
+import com.techchallenge.msdrivers.application.builder.driver.CustomDriverDomainEntityOutputBuilder;
 import com.techchallenge.msdrivers.application.builder.driver.DriverDomainEntityInputBuilder;
 import com.techchallenge.msdrivers.application.builder.driver.DriverDomainEntityOutputBuilder;
 import com.techchallenge.msdrivers.application.builder.driver.DriverEntityBuilder;
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
+import com.techchallenge.msdrivers.domain.entity.driver.CustomDriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
@@ -32,6 +34,14 @@ public class DriverMappers {
                 .withAge(driverEntity.getAge())
                 .withPhoneNumber(driverEntity.getPhoneNumber())
                 .withVehicle(driverEntity.getVehicles())
+                .withCreatedAt(driverEntity.getCreatedAt())
+                .build();
+    }
+
+    public static CustomDriverDomainEntityOutput mapToCustomDriverDomainEntityOutput(DriverEntity driverEntity) {
+        return new CustomDriverDomainEntityOutputBuilder()
+                .withExternalId(driverEntity.getExternalId())
+                .withName(driverEntity.getName())
                 .withCreatedAt(driverEntity.getCreatedAt())
                 .build();
     }

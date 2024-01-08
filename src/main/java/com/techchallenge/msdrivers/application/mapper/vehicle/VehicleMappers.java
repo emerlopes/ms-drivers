@@ -22,7 +22,7 @@ public class VehicleMappers {
     }
 
     public static VehicleDomainEntityOutput mapToVechileDomainEntityOutput(VehicleEntity vehicleEntity) {
-        final var driverDomainEntityOutput = DriverMappers.mapToDriverDomainEntityOutput(vehicleEntity.getDriver());
+        final var driverDomainEntityOutput = DriverMappers.mapToCustomDriverDomainEntityOutput(vehicleEntity.getDriver());
         return new VehicleDomainEntityOutputBuilder()
                 .withVehicleId(vehicleEntity.getVehicleId())
                 .withLicensePlateNumber(vehicleEntity.getLicensePlateNumber())

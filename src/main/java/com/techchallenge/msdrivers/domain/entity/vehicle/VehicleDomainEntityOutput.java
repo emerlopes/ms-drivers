@@ -1,5 +1,6 @@
 package com.techchallenge.msdrivers.domain.entity.vehicle;
 
+import com.techchallenge.msdrivers.domain.entity.driver.CustomDriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
 
@@ -11,7 +12,7 @@ public class VehicleDomainEntityOutput {
     private String licensePlateNumber;
     private String brand;
     private String model;
-    private DriverDomainEntityOutput driver;
+    private CustomDriverDomainEntityOutput driver;
     private LocalDateTime creationDate;
 
     public Long getVehicleId() {
@@ -46,11 +47,11 @@ public class VehicleDomainEntityOutput {
         this.model = model;
     }
 
-    public DriverDomainEntityOutput getDriver() {
+    public CustomDriverDomainEntityOutput getDriver() {
         return driver;
     }
 
-    public void setDriver(DriverDomainEntityOutput driver) {
+    public void setDriver(CustomDriverDomainEntityOutput driver) {
         this.driver = driver;
     }
 
@@ -60,17 +61,5 @@ public class VehicleDomainEntityOutput {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
-    }
-
-    @Override
-    public String toString() {
-        return "VehicleDomainEntityOutput{" +
-                "vehicleId=" + vehicleId +
-                ", licensePlateNumber='" + licensePlateNumber + '\'' +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", driver=" + driver +
-                ", creationDate=" + creationDate +
-                '}';
     }
 }

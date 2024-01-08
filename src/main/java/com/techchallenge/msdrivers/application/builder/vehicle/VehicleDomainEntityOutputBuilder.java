@@ -1,5 +1,6 @@
 package com.techchallenge.msdrivers.application.builder.vehicle;
 
+import com.techchallenge.msdrivers.domain.entity.driver.CustomDriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.entity.vehicle.VehicleDomainEntityOutput;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
@@ -34,7 +35,7 @@ public class VehicleDomainEntityOutputBuilder {
         return this;
     }
 
-    public VehicleDomainEntityOutputBuilder withDriver(DriverDomainEntityOutput driver) {
+    public VehicleDomainEntityOutputBuilder withDriver(CustomDriverDomainEntityOutput driver) {
         vehicleDomainEntityOutput.setDriver(driver);
         return this;
     }
