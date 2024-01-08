@@ -42,3 +42,19 @@ jobs:
             --build-arg DATABASE_URL=$DATABASE_URL
             --build-arg DATABASE_USERNAME=$DATABASE_USERNAME
             --build-arg DATABASE_PASSWORD=$DATABASE_PASSWORD
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from Docker Hub
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/spring-boot-docker:${{ github.sha }}
+      - name: Run docker container
+        run: |
+          docker run -d \
+            -p 8080:8080 \
+            -e DATABASE_URL=$DATABASE_URL \
+            -e DATABASE_USERNAME=$DATABASE_USERNAME \
+            -e DATABASE_PASSWORD=$DATABASE_PASSWORD \
+            ${{ secrets.DOCKER_USERNAME }}/spring-boot-docker:${{ github.sha }}
