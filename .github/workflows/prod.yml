@@ -8,6 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
     steps:
       - name: Build and push to Docker Hub
         uses: actions/checkout@v2
@@ -18,18 +22,23 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
           cache: gradle
+
       - name: Build with Gradle
         run: ./gradlew build
+
       - name: Login Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/spring-boot-docker:${{ github.sha }}
-
-
+          build-args: |
+            --build-arg DATABASE_URL=$DATABASE_URL
+            --build-arg DATABASE_USERNAME=$DATABASE_USERNAME
+            --build-arg DATABASE_PASSWORD=$DATABASE_PASSWORD
