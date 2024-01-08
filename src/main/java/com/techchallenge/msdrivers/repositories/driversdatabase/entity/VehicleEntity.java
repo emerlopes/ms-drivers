@@ -30,8 +30,8 @@ public class VehicleEntity {
     @JoinColumn(name = "internal_driver_id", nullable = false)
     private DriverEntity driver;
 
-    @Column(name = "creation_date", nullable = false)
-    private LocalDateTime creationDate;
+    @Column(name = "creation_at", nullable = false)
+    private LocalDateTime creationAt;
 
     public Long getVehicleId() {
         return vehicleId;
@@ -74,11 +74,11 @@ public class VehicleEntity {
     }
 
     public LocalDateTime getCreationDate() {
-        return creationDate;
+        return creationAt;
     }
 
     public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
+        this.creationAt = creationDate;
     }
 }
 
