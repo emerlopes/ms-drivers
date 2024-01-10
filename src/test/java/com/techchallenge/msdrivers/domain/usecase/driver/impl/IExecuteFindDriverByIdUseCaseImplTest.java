@@ -12,15 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class IExecuteGetDriverUseCaseImplTest {
+public class IExecuteFindDriverByIdUseCaseImplTest {
 
-    private IExecuteGetDriverUseCaseImpl useCase;
+    private IExecuteFindDriverByIdUseCaseImpl useCase;
     private IDriverDomainService driverDomainService;
 
     @BeforeEach
     public void setUp() {
         driverDomainService = mock(IDriverDomainService.class);
-        useCase = new IExecuteGetDriverUseCaseImpl(driverDomainService);
+        useCase = new IExecuteFindDriverByIdUseCaseImpl(driverDomainService);
     }
 
     @Test

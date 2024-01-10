@@ -4,13 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.VehicleDTO;
-import com.techchallenge.msdrivers.application.mapper.vehicle.VehicleMappers;
 import com.techchallenge.msdrivers.application.shared.CustomData;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindDriverByIdUseCase;
 import com.techchallenge.msdrivers.domain.usecase.vehicle.IExecuteCreateVehicleUseCase;
-import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.entity.vehicle.VehicleDomainEntityInput;
-import com.techchallenge.msdrivers.domain.entity.vehicle.VehicleDomainEntityOutput;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -27,12 +24,12 @@ public class VehicleControllerTest {
     @Mock
     private IExecuteCreateVehicleUseCase createVehicleUseCase;
     @Mock
-    private IExecuteGetDriverUseCase getDriverUseCase;
+    private IExecuteFindDriverByIdUseCase getDriverUseCase;
 
     @BeforeEach
     public void setUp() {
         createVehicleUseCase = mock(IExecuteCreateVehicleUseCase.class);
-        getDriverUseCase = mock(IExecuteGetDriverUseCase.class);
+        getDriverUseCase = mock(IExecuteFindDriverByIdUseCase.class);
         vehicleController = new VehicleController(createVehicleUseCase, getDriverUseCase);
     }
 

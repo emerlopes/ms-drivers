@@ -3,8 +3,8 @@ package com.techchallenge.msdrivers.application.entrypoint.rest;
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteCreateDriverUseCase;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetAllDriversUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteSaveDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindAllDriversUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -23,10 +23,10 @@ import static org.mockito.Mockito.when;
 class DriverControllerTest {
 
     @Mock
-    private IExecuteCreateDriverUseCase executeCreatePersonUseCase;
+    private IExecuteSaveDriverUseCase executeCreatePersonUseCase;
 
     @Mock
-    private IExecuteGetAllDriversUseCase executeGetPersonUseCase;
+    private IExecuteFindAllDriversUseCase executeGetPersonUseCase;
 
     @InjectMocks
     private DriverController driverController;
@@ -82,7 +82,7 @@ class DriverControllerTest {
 
         when(executeCreatePersonUseCase.execute(any())).thenReturn(customData);
 
-        ResponseEntity<?> response = driverController.createPerson(driverDTO);
+        ResponseEntity<?> response = driverController.saveDriver(driverDTO);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(customData, response.getBody());

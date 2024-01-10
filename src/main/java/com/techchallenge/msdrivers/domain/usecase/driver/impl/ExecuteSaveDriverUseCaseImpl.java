@@ -4,15 +4,15 @@ import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteCreateDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteSaveDriverUseCase;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExecuteCreateDriverUseCaseImpl implements IExecuteCreateDriverUseCase {
+public class ExecuteSaveDriverUseCaseImpl implements IExecuteSaveDriverUseCase {
 
     private final IDriverDomainService personService;
 
-    public ExecuteCreateDriverUseCaseImpl(IDriverDomainService personService) {
+    public ExecuteSaveDriverUseCaseImpl(IDriverDomainService personService) {
         this.personService = personService;
     }
 

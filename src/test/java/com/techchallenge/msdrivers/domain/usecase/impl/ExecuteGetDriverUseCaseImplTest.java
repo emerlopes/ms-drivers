@@ -3,7 +3,7 @@ package com.techchallenge.msdrivers.domain.usecase.impl;
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
-import com.techchallenge.msdrivers.domain.usecase.driver.impl.ExecuteGetAllDriversUseCaseImpl;
+import com.techchallenge.msdrivers.domain.usecase.driver.impl.ExecuteFindAllDriversUseCaseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -22,7 +22,7 @@ class ExecuteGetDriverUseCaseImplTest {
     private IDriverDomainService personService;
 
     @InjectMocks
-    private ExecuteGetAllDriversUseCaseImpl executeGetPersonUseCase;
+    private ExecuteFindAllDriversUseCaseImpl executeGetPersonUseCase;
 
     @BeforeEach
     void setUp() {
