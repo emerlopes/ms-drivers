@@ -2,7 +2,7 @@ package com.techchallenge.msdrivers.application.entrypoint.rest;
 
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.VehicleDTO;
 import com.techchallenge.msdrivers.application.mapper.vehicle.VehicleMappers;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindDriverByIdUseCase;
 import com.techchallenge.msdrivers.domain.usecase.vehicle.IExecuteCreateVehicleUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,11 @@ public class VehicleController {
 
     private final IExecuteCreateVehicleUseCase executeCreateVehicleUseCase;
 
-    private final IExecuteGetDriverUseCase executeGetDriverUseCase;
+    private final IExecuteFindDriverByIdUseCase executeGetDriverUseCase;
 
     public VehicleController(
             IExecuteCreateVehicleUseCase executeCreateVehicleUseCase,
-            IExecuteGetDriverUseCase executeGetDriverUseCase) {
+            IExecuteFindDriverByIdUseCase executeGetDriverUseCase) {
         this.executeCreateVehicleUseCase = executeCreateVehicleUseCase;
 
         this.executeGetDriverUseCase = executeGetDriverUseCase;

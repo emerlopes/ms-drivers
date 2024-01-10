@@ -3,17 +3,17 @@ package com.techchallenge.msdrivers.domain.usecase.driver.impl;
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
 import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetAllDriversUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindAllDriversUseCase;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ExecuteGetAllDriversUseCaseImpl implements IExecuteGetAllDriversUseCase {
+public class ExecuteFindAllDriversUseCaseImpl implements IExecuteFindAllDriversUseCase {
 
     private final IDriverDomainService driverDomainService;
 
-    public ExecuteGetAllDriversUseCaseImpl(IDriverDomainService personService) {
+    public ExecuteFindAllDriversUseCaseImpl(IDriverDomainService personService) {
         this.driverDomainService = personService;
     }
 
