@@ -32,7 +32,7 @@ class ExecuteGetDriverUseCaseImplTest {
     @Test
     void execute() {
         var person = new DriverDomainEntityOutput();
-        person.setExternalId(UUID.randomUUID());
+        person.setExternalDriverId(UUID.randomUUID());
         person.setName("Alice");
         person.setAge(30);
         person.setPhoneNumber("1234567890");

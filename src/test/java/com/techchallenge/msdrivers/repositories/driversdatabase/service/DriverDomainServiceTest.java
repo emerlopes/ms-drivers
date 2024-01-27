@@ -37,7 +37,7 @@ class DriverDomainServiceTest {
 
         when(personRepository.save(Mockito.any())).thenReturn(personEntity);
 
-        DriverDomainEntityOutput result = personDomainService.createPerson(input);
+        DriverDomainEntityOutput result = personDomainService.createDriver(input);
 
         assertNotNull(result);
     }

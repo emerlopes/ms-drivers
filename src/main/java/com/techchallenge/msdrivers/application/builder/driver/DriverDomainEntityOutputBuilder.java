@@ -17,7 +17,7 @@ public class DriverDomainEntityOutputBuilder {
     }
 
     public DriverDomainEntityOutputBuilder withExternalId(UUID externalId) {
-        driverDomainEntityOutput.setExternalId(externalId);
+        driverDomainEntityOutput.setExternalDriverId(externalId);
         return this;
     }
 

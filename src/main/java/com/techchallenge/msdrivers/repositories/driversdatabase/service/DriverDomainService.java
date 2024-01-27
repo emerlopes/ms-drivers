@@ -22,7 +22,7 @@ public class DriverDomainService implements IDriverDomainService {
     }
 
     @Override
-    public DriverDomainEntityOutput createPerson(DriverDomainEntityInput driverDomainEntityInput) {
+    public DriverDomainEntityOutput createDriver(DriverDomainEntityInput driverDomainEntityInput) {
         final var entity = DriverMappers.mapToDriverEntity(driverDomainEntityInput);
         final var personEntity = driverRepository.save(entity);
 

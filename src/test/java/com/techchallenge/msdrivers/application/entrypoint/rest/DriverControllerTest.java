@@ -44,7 +44,7 @@ class DriverControllerTest {
         String phoneNumber = "1234567890";
 
         DriverDomainEntityOutput personOutput = new DriverDomainEntityOutput();
-        personOutput.setExternalId(externalId);
+        personOutput.setExternalDriverId(externalId);
         personOutput.setName(name);
         personOutput.setAge(age);
         personOutput.setPhoneNumber(phoneNumber);
@@ -73,7 +73,7 @@ class DriverControllerTest {
         CustomData<DriverDomainEntityOutput> customData = new CustomData<>();
 
         DriverDomainEntityOutput expectedResponse = new DriverDomainEntityOutput();
-        expectedResponse.setExternalId(externalId);
+        expectedResponse.setExternalDriverId(externalId);
         expectedResponse.setName(name);
         expectedResponse.setAge(age);
         expectedResponse.setPhoneNumber(phoneNumber);

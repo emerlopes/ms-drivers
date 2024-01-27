@@ -34,9 +34,9 @@ class ExecuteCreateDriverUseCaseImplTest {
         DriverDomainEntityInput input = new DriverDomainEntityInput();
 
         DriverDomainEntityOutput output = new DriverDomainEntityOutput();
-        output.setExternalId(UUID.randomUUID());
+        output.setExternalDriverId(UUID.randomUUID());
 
-        when(personService.createPerson(input)).thenReturn(output);
+        when(personService.createDriver(input)).thenReturn(output);
 
         CustomData<DriverDomainEntityOutput> result = executeCreatePersonUseCase.execute(input);
 
