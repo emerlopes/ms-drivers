@@ -36,6 +36,11 @@ public class DriverDomainEntityOutputBuilder {
         return this;
     }
 
+    public DriverDomainEntityOutputBuilder withAddress(String address) {
+        driverDomainEntityOutput.setAddress(address);
+        return this;
+    }
+
     public DriverDomainEntityOutputBuilder withVehicle(List<VehicleEntity> vehicle) {
         driverDomainEntityOutput.setVehicle(vehicle);
         return this;

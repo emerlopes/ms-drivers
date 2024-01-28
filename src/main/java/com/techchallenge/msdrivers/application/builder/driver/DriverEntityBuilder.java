@@ -36,6 +36,11 @@ public class DriverEntityBuilder {
         return this;
     }
 
+    public DriverEntityBuilder withAddress(String address) {
+        driverEntity.setAddress(address);
+        return this;
+    }
+
     public DriverEntityBuilder withVehicle(List<VehicleEntity> vehicle) {
         driverEntity.setVehicles(vehicle);
         return this;

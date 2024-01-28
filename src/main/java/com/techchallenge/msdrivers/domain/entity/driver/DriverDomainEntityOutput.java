@@ -20,6 +20,8 @@ public class DriverDomainEntityOutput {
     @JsonProperty("phone_number")
     private String phoneNumber;
 
+    private String address;
+
     @JsonProperty("vehicle")
     private List<VehicleEntity> vehicle;
 
