@@ -16,4 +16,6 @@ public class DriverDTO {
     @JsonProperty("phone_number")
     private String phoneNumber;
 
+    private String address;
+
 }

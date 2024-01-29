@@ -24,6 +24,7 @@ public class DriverMappers {
                 .withName(driverDTO.getName())
                 .withAge(driverDTO.getAge())
                 .withPhoneNumber(driverDTO.getPhoneNumber())
+                .withAddress(driverDTO.getAddress())
                 .build();
     }
 
@@ -33,6 +34,7 @@ public class DriverMappers {
                 .withName(driverEntity.getName())
                 .withAge(driverEntity.getAge())
                 .withPhoneNumber(driverEntity.getPhoneNumber())
+                .withAddress(driverEntity.getAddress())
                 .withVehicle(driverEntity.getVehicles())
                 .withCreatedAt(driverEntity.getCreatedAt())
                 .build();
@@ -71,6 +73,7 @@ public class DriverMappers {
                 .withName(driverDomainEntityInput.getName())
                 .withAge(driverDomainEntityInput.getAge())
                 .withPhoneNumber(driverDomainEntityInput.getPhoneNumber())
+                .withAddress(driverDomainEntityInput.getAddress())
                 .withVehicle(new ArrayList<>())
                 .withCreateAt(LocalDateTime.now())
                 .build();

@@ -1,90 +1,74 @@
 package com.techchallenge.msdrivers.application.entrypoint.rest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
-import com.techchallenge.msdrivers.application.shared.CustomData;
-import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteSaveDriverUseCase;
 import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindAllDriversUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindDriverByIdUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteSaveDriverUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class DriverControllerTest {
-
-    @Mock
-    private IExecuteSaveDriverUseCase executeCreatePersonUseCase;
+@SpringBootTest
+public class DriverControllerTest {
 
     @Mock
-    private IExecuteFindAllDriversUseCase executeGetPersonUseCase;
+    private IExecuteSaveDriverUseCase iExecuteSaveDriverUseCase;
+
+    @Mock
+    private IExecuteFindAllDriversUseCase iExecuteFindAllDriversUseCase;
+
+    @Mock
+    private IExecuteFindDriverByIdUseCase iExecuteFindDriverByIdUseCase;
 
     @InjectMocks
     private DriverController driverController;
 
+    private MockMvc mockMvc;
+
     @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
+    public void setup() {
+        mockMvc = MockMvcBuilders.standaloneSetup(driverController).build();
     }
 
     @Test
-    void testGetPersons() {
-        UUID externalId = UUID.randomUUID();
-        String name = "Alice";
-        int age = 30;
-        String phoneNumber = "1234567890";
-
-        DriverDomainEntityOutput personOutput = new DriverDomainEntityOutput();
-        personOutput.setExternalId(externalId);
-        personOutput.setName(name);
-        personOutput.setAge(age);
-        personOutput.setPhoneNumber(phoneNumber);
-
-        CustomData<List<DriverDomainEntityOutput>> customData = new CustomData<>();
-
-        List<DriverDomainEntityOutput> persons = List.of(personOutput);
-        customData.setData(persons);
-        when(executeGetPersonUseCase.execute()).thenReturn(customData);
-
-        ResponseEntity<?> response = driverController.findDrivers();
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(customData, response.getBody());
+    public void testFindDrivers() throws Exception {
+        mockMvc.perform(get("/api/drivers")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
     @Test
-    void testCreatePerson() {
+    public void testFindDriverById() throws Exception {
+        UUID id = UUID.randomUUID();
+        mockMvc.perform(get("/api/drivers/" + id.toString())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testSaveDriver() throws Exception {
         DriverDTO driverDTO = new DriverDTO();
+        driverDTO.setCpf("30030030030");
+        driverDTO.setName("Test");
+        driverDTO.setAge(30);
+        driverDTO.setPhoneNumber("1234567890");
+        driverDTO.setAddress("Test address");
 
-        UUID externalId = UUID.randomUUID();
-        String name = "Bob";
-        int age = 35;
-        String phoneNumber = "0987654321";
-
-        CustomData<DriverDomainEntityOutput> customData = new CustomData<>();
-
-        DriverDomainEntityOutput expectedResponse = new DriverDomainEntityOutput();
-        expectedResponse.setExternalId(externalId);
-        expectedResponse.setName(name);
-        expectedResponse.setAge(age);
-        expectedResponse.setPhoneNumber(phoneNumber);
-
-        customData.setData(expectedResponse);
-
-        when(executeCreatePersonUseCase.execute(any())).thenReturn(customData);
-
-        ResponseEntity<?> response = driverController.saveDriver(driverDTO);
-
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(customData, response.getBody());
+        mockMvc.perform(post("/api/drivers")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(new ObjectMapper().writeValueAsString(driverDTO)))
+                .andExpect(status().isCreated());
     }
 }

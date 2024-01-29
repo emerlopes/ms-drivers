@@ -17,7 +17,7 @@ public class DriverDomainEntityOutputBuilder {
     }
 
     public DriverDomainEntityOutputBuilder withExternalId(UUID externalId) {
-        driverDomainEntityOutput.setExternalId(externalId);
+        driverDomainEntityOutput.setExternalDriverId(externalId);
         return this;
     }
 
@@ -33,6 +33,11 @@ public class DriverDomainEntityOutputBuilder {
 
     public DriverDomainEntityOutputBuilder withPhoneNumber(String phoneNumber) {
         driverDomainEntityOutput.setPhoneNumber(phoneNumber);
+        return this;
+    }
+
+    public DriverDomainEntityOutputBuilder withAddress(String address) {
+        driverDomainEntityOutput.setAddress(address);
         return this;
     }
 

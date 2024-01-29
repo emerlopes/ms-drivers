@@ -3,52 +3,60 @@ package com.techchallenge.msdrivers.domain.usecase.driver.impl;
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.service.IDriverDomainService;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
+@SpringBootTest
 public class IExecuteFindDriverByIdUseCaseImplTest {
 
-    private IExecuteFindDriverByIdUseCaseImpl useCase;
+
+    @InjectMocks
+    private IExecuteFindDriverByIdUseCaseImpl findDriverByIdUseCase;
+
+    @Mock
     private IDriverDomainService driverDomainService;
 
-    @BeforeEach
-    public void setUp() {
-        driverDomainService = mock(IDriverDomainService.class);
-        useCase = new IExecuteFindDriverByIdUseCaseImpl(driverDomainService);
-    }
-
     @Test
-    public void testExecuteWithValidExternalDriverId() {
-        // Arrange
+    public void testExecuteWithDriverFound() {
         UUID externalDriverId = UUID.randomUUID();
-        DriverEntity expectedDriverEntity = new DriverEntity();
-        when(driverDomainService.getDriverByExternalId(externalDriverId)).thenReturn(expectedDriverEntity);
+        // Crie um objeto DriverEntity simulado
+        DriverEntity driverEntity = new DriverEntity();
+        driverEntity.setExternalId(externalDriverId);
+        driverEntity.setName("John Doe");
+        // Defina o comportamento do mock para driverDomainService
+        when(driverDomainService.getDriverByExternalId(externalDriverId)).thenReturn(driverEntity);
 
-        // Act
-        CustomData<DriverEntity> customData = useCase.execute(externalDriverId);
+        // Execute o método execute() do caso de uso
+        CustomData<DriverEntity> result = findDriverByIdUseCase.execute(externalDriverId);
 
-        // Assert
-        assertNotNull(customData);
-        assertEquals(expectedDriverEntity, customData.getData());
+        // Verifique se o resultado contém os dados simulados do motorista encontrado
+        assertEquals(driverEntity, result.getData());
+
+        // Verifique se o método getDriverByExternalId foi chamado no serviço de domínio com o ID correto
+        verify(driverDomainService, times(1)).getDriverByExternalId(externalDriverId);
     }
 
     @Test
-    public void testExecuteWithInvalidExternalDriverId() {
-        // Arrange
-        UUID invalidExternalDriverId = UUID.randomUUID();
-        when(driverDomainService.getDriverByExternalId(invalidExternalDriverId)).thenReturn(null);
+    public void testExecuteWithNoDriverFound() {
+        UUID externalDriverId = UUID.randomUUID();
+        // Defina o comportamento do mock para driverDomainService retornando null
+        when(driverDomainService.getDriverByExternalId(externalDriverId)).thenReturn(null);
 
-        // Act
-        CustomData<DriverEntity> customData = useCase.execute(invalidExternalDriverId);
+        // Execute o método execute() do caso de uso
+        CustomData<DriverEntity> result = findDriverByIdUseCase.execute(externalDriverId);
 
-        // Assert
-        assertNotNull(customData);
-        assertNull(customData.getData());
+        // Verifique se o resultado contém um campo de dados nulo (nenhum motorista encontrado)
+        assertEquals(null, result.getData());
+
+        // Verifique se o método getDriverByExternalId foi chamado no serviço de domínio com o ID correto
+        verify(driverDomainService, times(1)).getDriverByExternalId(externalDriverId);
     }
+
 }
