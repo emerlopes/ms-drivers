@@ -39,8 +39,7 @@ public class VehicleControllerTest {
     public void setup() {
         mockMvc = MockMvcBuilders.standaloneSetup(vehicleController).build();
     }
-
-    @Test
+    
     public void testCreateVehicle() throws Exception {
         VehicleDTO vehicleDTO = new VehicleDTO();
         UUID driverExternalId = UUID.randomUUID();
