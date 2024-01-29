@@ -12,13 +12,15 @@ import java.util.UUID;
 public class DriverDomainEntityOutput {
 
     @JsonProperty("external_id")
-    private UUID externalId;
+    private UUID externalDriverId;
 
     private String name;
     private int age;
 
     @JsonProperty("phone_number")
     private String phoneNumber;
+
+    private String address;
 
     @JsonProperty("vehicle")
     private List<VehicleEntity> vehicle;

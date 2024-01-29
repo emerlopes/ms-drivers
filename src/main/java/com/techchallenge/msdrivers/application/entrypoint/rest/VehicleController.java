@@ -2,7 +2,7 @@ package com.techchallenge.msdrivers.application.entrypoint.rest;
 
 import com.techchallenge.msdrivers.application.entrypoint.rest.dto.VehicleDTO;
 import com.techchallenge.msdrivers.application.mapper.vehicle.VehicleMappers;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteGetDriverUseCase;
+import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindDriverByIdUseCase;
 import com.techchallenge.msdrivers.domain.usecase.vehicle.IExecuteCreateVehicleUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,22 +11,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controlador REST para lidar com operações relacionadas a veículos.
+ */
 @RestController
 @RequestMapping("/api/vehicles")
 public class VehicleController {
 
     private final IExecuteCreateVehicleUseCase executeCreateVehicleUseCase;
+    private final IExecuteFindDriverByIdUseCase executeGetDriverUseCase;
 
-    private final IExecuteGetDriverUseCase executeGetDriverUseCase;
-
+    /**
+     * Construtor da classe VehicleController.
+     *
+     * @param executeCreateVehicleUseCase Caso de uso para criar um novo veículo.
+     * @param executeGetDriverUseCase     Caso de uso para buscar um motorista por ID externo.
+     */
     public VehicleController(
             IExecuteCreateVehicleUseCase executeCreateVehicleUseCase,
-            IExecuteGetDriverUseCase executeGetDriverUseCase) {
+            IExecuteFindDriverByIdUseCase executeGetDriverUseCase) {
         this.executeCreateVehicleUseCase = executeCreateVehicleUseCase;
-
         this.executeGetDriverUseCase = executeGetDriverUseCase;
     }
 
+    /**
+     * Endpoint para criar um novo veículo.
+     *
+     * @param vehicleDTO DTO contendo os dados do veículo a ser criado.
+     * @return ResponseEntity com o veículo criado e status HTTP CREATED (201).
+     */
     @PostMapping
     public ResponseEntity<?> createVehicle(@RequestBody VehicleDTO vehicleDTO) {
         final var vehicleDomainEntityInput = VehicleMappers.mapToVechileDomainEntityInput(vehicleDTO);

@@ -1,48 +1,56 @@
 package com.techchallenge.msdrivers.repositories.driversdatabase.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import com.techchallenge.msdrivers.domain.entity.vehicle.VehicleDomainEntityInput;
 import com.techchallenge.msdrivers.domain.entity.vehicle.VehicleDomainEntityOutput;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.VehicleEntity;
 import com.techchallenge.msdrivers.repositories.driversdatabase.repository.IDriverRepository;
 import com.techchallenge.msdrivers.repositories.driversdatabase.repository.IVehicleRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.UUID;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
+@SpringBootTest
 public class VehicleDomainServiceTest {
 
+    @InjectMocks
     private VehicleDomainService vehicleDomainService;
-    private IVehicleRepository vehicleRepository;
-    private IDriverRepository driverRepository;
 
-    @BeforeEach
-    public void setUp() {
-        vehicleRepository = mock(IVehicleRepository.class);
-        driverRepository = mock(IDriverRepository.class);
-        vehicleDomainService = new VehicleDomainService(vehicleRepository, driverRepository);
-    }
+    @Mock
+    private IVehicleRepository vehicleRepository;
+
+    @Mock
+    private IDriverRepository driverRepository;
 
     @Test
     public void testCreateVehicle() {
-        // Arrange
-        VehicleDomainEntityInput input = new VehicleDomainEntityInput();
-        final var driver = new DriverEntity();
-        driver.setExternalId(UUID.randomUUID());
-        input.setDriver(driver);
-        VehicleEntity expectedVehicleEntity = new VehicleEntity();
-        expectedVehicleEntity.setDriver(driver);
-        when(vehicleRepository.save(any())).thenReturn(expectedVehicleEntity);
+        // Crie um objeto VehicleDomainEntityInput simulado
+        VehicleDomainEntityInput input = new VehicleDomainEntityInput(/* Preencha com dados simulados */);
 
-        // Act
-        VehicleDomainEntityOutput output = vehicleDomainService.createVehicle(input);
+        // Crie um objeto DriverEntity simulado
+        DriverEntity driverEntity = new DriverEntity(/* Preencha com dados simulados */);
 
-        // Assert
-        assertNotNull(output);
-        verify(driverRepository, times(1)).save(expectedVehicleEntity.getDriver());
+        // Crie um objeto VehicleEntity simulado
+        VehicleEntity vehicleEntity = new VehicleEntity(/* Preencha com dados simulados */);
+        vehicleEntity.setDriver(driverEntity);
+
+        // Defina o comportamento do mock para vehicleRepository
+        when(vehicleRepository.save(any(VehicleEntity.class))).thenReturn(vehicleEntity);
+
+        // Execute o método createVehicle() do serviço de domínio
+        VehicleDomainEntityOutput result = vehicleDomainService.createVehicle(input);
+
+        // Verifique se o resultado contém os dados simulados do veículo criado
+        assertEquals(vehicleEntity.getVehicleId(), result.getVehicleId());
+
+        // Verifique se o método save foi chamado no repositório de veículos
+        verify(vehicleRepository, times(1)).save(any(VehicleEntity.class));
+
+        // Verifique se o método save foi chamado no repositório de motoristas
+        verify(driverRepository, times(1)).save(driverEntity);
     }
 }

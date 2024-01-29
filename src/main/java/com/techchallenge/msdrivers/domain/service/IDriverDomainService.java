@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface IDriverDomainService {
-    DriverDomainEntityOutput createPerson(DriverDomainEntityInput driverDomainEntityInput);
+    DriverDomainEntityOutput createDriver(DriverDomainEntityInput driverDomainEntityInput);
 
     List<DriverDomainEntityOutput> findAllDrivers();
 

@@ -2,12 +2,17 @@ package com.techchallenge.msdrivers.repositories.driversdatabase.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Index;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+
+@Getter
+@Setter
 @Entity
 @Table(name = "tb01_driver")
 public class DriverEntity {
@@ -34,6 +39,9 @@ public class DriverEntity {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "address")
+    private String address;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VehicleEntity> vehicles;
@@ -45,67 +53,4 @@ public class DriverEntity {
         this.externalId = UUID.randomUUID();
     }
 
-    public Long getInternalId() {
-        return internalId;
-    }
-
-    public void setInternalId(Long internalId) {
-        this.internalId = internalId;
-    }
-
-    public UUID getExternalId() {
-        return externalId;
-    }
-
-    public void setExternalId(UUID externalId) {
-        this.externalId = externalId;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public List<VehicleEntity> getVehicles() {
-        return vehicles;
-    }
-
-    public void setVehicles(List<VehicleEntity> vehicles) {
-        this.vehicles = vehicles;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
 }

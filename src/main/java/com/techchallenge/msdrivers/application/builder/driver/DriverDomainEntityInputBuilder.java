@@ -31,6 +31,11 @@ public class DriverDomainEntityInputBuilder {
         return this;
     }
 
+    public DriverDomainEntityInputBuilder withAddress(String address) {
+        driverDomainEntityInput.setAddress(address);
+        return this;
+    }
+
     public DriverDomainEntityInput build() {
         return driverDomainEntityInput;
     }
