@@ -4,7 +4,6 @@ import com.techchallenge.msdrivers.application.entrypoint.rest.dto.DriverDTO;
 import com.techchallenge.msdrivers.application.mapper.driver.DriverMappers;
 import com.techchallenge.msdrivers.application.shared.CustomData;
 import com.techchallenge.msdrivers.domain.entity.driver.DriverDomainEntityOutput;
-import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindAllDriversUseCase;
 import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteFindDriverByIdUseCase;
 import com.techchallenge.msdrivers.domain.usecase.driver.IExecuteSaveDriverUseCase;
 import com.techchallenge.msdrivers.repositories.driversdatabase.entity.DriverEntity;
@@ -27,22 +26,18 @@ import java.util.UUID;
 public class DriverController {
 
     private final IExecuteSaveDriverUseCase iExecuteSaveDriverUseCase;
-    private final IExecuteFindAllDriversUseCase iExecuteFindAllDriversUseCase;
     private final IExecuteFindDriverByIdUseCase iExecuteFindDriverByIdUseCase;
 
     /**
      * Construtor da classe DriverController.
      *
      * @param iExecuteSaveDriverUseCase     Caso de uso para salvar motorista.
-     * @param iExecuteFindAllDriversUseCase Caso de uso para buscar todos os motoristas.
      * @param iExecuteFindDriverByIdUseCase Caso de uso para buscar um motorista por ID externo.
      */
     public DriverController(
             IExecuteSaveDriverUseCase iExecuteSaveDriverUseCase,
-            IExecuteFindAllDriversUseCase iExecuteFindAllDriversUseCase,
             IExecuteFindDriverByIdUseCase iExecuteFindDriverByIdUseCase) {
         this.iExecuteSaveDriverUseCase = iExecuteSaveDriverUseCase;
-        this.iExecuteFindAllDriversUseCase = iExecuteFindAllDriversUseCase;
         this.iExecuteFindDriverByIdUseCase = iExecuteFindDriverByIdUseCase;
     }
 
