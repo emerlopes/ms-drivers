@@ -36,6 +36,10 @@ dependencies {
     testImplementation group: 'com.h2database', name: 'h2', version: '2.2.220'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.mockito:mockito-junit-jupiter'
+
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.3.0'
+
 }
 
 tasks.named('test') {
