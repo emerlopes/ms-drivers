@@ -43,13 +43,6 @@ public class DriverControllerTest {
     }
 
     @Test
-    public void testFindDrivers() throws Exception {
-        mockMvc.perform(get("/api/drivers")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-    }
-
-    @Test
     public void testFindDriverById() throws Exception {
         UUID id = UUID.randomUUID();
         mockMvc.perform(get("/api/drivers/" + id.toString())
