@@ -57,7 +57,6 @@ public class DriverController {
     })
     @GetMapping(value = "/{externalDriverId}", produces = "application/json")
     public ResponseEntity<CustomData<DriverEntity>> findDriverById(@PathVariable UUID externalDriverId) {
-        // Substitua isso pela lógica real para buscar e formatar os dados do motorista conforme necessário
         final var response = iExecuteFindDriverByIdUseCase.execute(externalDriverId);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }

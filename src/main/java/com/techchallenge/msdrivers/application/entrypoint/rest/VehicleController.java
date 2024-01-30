@@ -54,7 +54,7 @@ public class VehicleController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Operação bem-sucedida, novo veículo criado e retornado.")
     })
-    @PostMapping("/veiculos")
+    @PostMapping
     public ResponseEntity<CustomData<VehicleDomainEntityOutput>> createVehicle(@RequestBody VehicleDTO vehicleDTO) {
         final var vehicleDomainEntityInput = VehicleMappers.mapToVechileDomainEntityInput(vehicleDTO);
         final var driverExternalId = vehicleDTO.getDriverExternalId();
